@@ -2,16 +2,15 @@
   "name": "proxy-server",
   "version": "1.0.0",
   "description": "Proxy server for ReactJS application",
-  "main": "proxy-server.js", // Tên file chính của proxy server
+  "main": "proxy-server.js",
   "scripts": {
-    "start": "node proxy-server.js" // Lệnh để khởi động proxy server
+    "start": "node proxy-server.js"
   },
   "dependencies": {
     "express": "^4.17.1",
     "http-proxy-middleware": "^1.0.6"
-    // Danh sách các dependencies khác nếu có
   },
   "engines": {
-    "node": ">=12.0.0" // Phiên bản Node.js được yêu cầu
+    "node": ">=12.0.0"
   }
 }
