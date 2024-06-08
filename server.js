@@ -1,16 +1,22 @@
 const express = require("express");
+const { createProxyMiddleware } = require("http-proxy-middleware");
+
 const app = express();
 
-const port = process.env.PORT || 5000;
+// Proxy middleware
+app.use(
+  "/api",
+  createProxyMiddleware({
+    target: "https://api.steampowered.com",
+    changeOrigin: true,
+    pathRewrite: {
+      "^/api": "/", // remove base path
+    },
+  })
+);
 
-app.get("/", (req, res) => {
-  return res.status(200).send({
-    message: "Hello World!",
-  });
+// Start server
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Proxy server is running on port ${PORT}`);
 });
-
-app.listen(port, () => {
-  console.log("Listening on " + port);
-});
-
-module.exports = app;
